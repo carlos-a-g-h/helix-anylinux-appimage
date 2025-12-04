@@ -1,9 +1,12 @@
-# TEMPLATE-AppImage 🐧
+# Helix-Anylinux-AppImage
 
-[![GitHub Downloads](https://img.shields.io/github/downloads/pkgforge-dev/TEMPLATE-AppImage/total?logo=github&label=GitHub%20Downloads)](https://github.com/pkgforge-dev/TEMPLATE-AppImage/releases/latest)
-[![CI Build Status](https://github.com//pkgforge-dev/TEMPLATE-AppImage/actions/workflows/appimage.yml/badge.svg)](https://github.com/pkgforge-dev/TEMPLATE-AppImage/releases/latest)
+[![GitHub Downloads](https://img.shields.io/github/downloads/carlos-a-g-h/helix-anylinux-appimage/total?logo=github&label=GitHub%20Downloads)](https://github.com/carlos-a-g-h/helix-anylinux-appimage/releases/latest)
 
-* [Latest Stable Release](https://github.com/pkgforge-dev/TEMPLATE-AppImage/releases/latest)
+[![CI Build Status](https://github.com//carlos-a-g-h/helix-anylinux-appimage/actions/workflows/appimage.yml/badge.svg)](https://github.com/carlos-a-g-h/helix-anylinux-appimage/releases/latest)
+
+Download the latest release [here](https://github.com/carlos-a-g-h/helix-anylinux-appimage/releases/latest)
+
+## What is the AnyLinux project?
 
 ---
 
@@ -13,7 +16,7 @@ AppImage made using [sharun](https://github.com/VHSgunzo/sharun), which makes it
 
 This AppImage can work **without FUSE** at all thanks to the [uruntime](https://github.com/VHSgunzo/uruntime)
 
-More at: [AnyLinux-AppImages](https://pkgforge-dev.github.io/Anylinux-AppImages/)
+More at: [AnyLinux-AppImages](https://carlos-a-g-h.github.io/Anylinux-AppImages/)
 
 <details>
   <summary><b><i>raison d'être</i></b></summary>
@@ -21,6 +24,14 @@ More at: [AnyLinux-AppImages](https://pkgforge-dev.github.io/Anylinux-AppImages/
   </a>
 </details>
 
----
+## About Helix
 
-# Fork this repository to quickly make an AppImage using the [Anylinux-AppImages](https://github.com/pkgforge-dev/Anylinux-AppImages) tools
+Helix is a terminal-based modal text editor similar to Vim/NeoVim, but it does not uses vim-motions, it uses its own set of motions similar to the Vim ones, but with an emphasis on more ergonomics
+
+The official repository is [this one](https://github.com/helix-editor/helix)
+
+## About this specific appimage
+
+The appimages are made using the official binaries from the official repositories
+
+The appimages made on this repo are NON-OFFICIAL, Helix already releases their own appimages, but they do not run on older systems, and that is why I made this repository, because I use an older system that does not run newer versions of Helix
