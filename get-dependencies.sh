@@ -7,7 +7,9 @@ VERSION=$(cat version)
 
 STEM="helix-$VERSION-$ARCH-linux"
 TARFILE="$STEM.tar.xz"
-URL="https://github.com/helix-editor/helix/releases/download/$VERSION/$TARFILE"
+URL_TARFILE="https://github.com/helix-editor/helix/releases/download/$VERSION/$TARFILE"
+
+URL_ICON="https://raw.githubusercontent.com/helix-editor/helix/refs/heads/master/contrib/helix.png"
 
 WMCLASS="helix"
 
@@ -18,9 +20,14 @@ if ! [ -d "$STEM" ]
 then
 	if ! [ -f "$TARFILE" ]
 	then
-		wget --retry-connrefused --tries=10 "$URL"
+		wget --retry-connrefused --tries=10 "$URL_TARFILE"
 	fi
 	tar -xf "$STEM.tar.xz"
+fi
+
+if [ ! -f "helix.png" ]
+then
+	wget --retry-connrefused --tries=10 "$URL_ICON"
 fi
 
 echo "Creating AppDir beforehand"
