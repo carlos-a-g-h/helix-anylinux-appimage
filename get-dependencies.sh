@@ -3,16 +3,44 @@
 set -eu
 
 ARCH=$(uname -m)
+VERSION=$(cat version)
 
-echo "Installing package dependencies..."
-echo "---------------------------------------------------------------"
-# pacman -Syu --noconfirm PACKAGESHERE
+STEM="helix-$VERSION-$ARCH-linux"
+TARFILE="$STEM.tar.xz"
+URL="https://github.com/helix-editor/helix/releases/download/$VERSION/$TARFILE"
 
-echo "Installing debloated packages..."
-echo "---------------------------------------------------------------"
-get-debloated-pkgs --add-common --prefer-nano
+WMCLASS="helix"
 
-# Comment this out if you need an AUR package
-#make-aur-package PACKAGENAME
+echo "Ensuring Helix ver. $VERSION"
+echo "-------------------------------"
 
-# If the application needs to be manually built that has to be done down here
+if ! [ -d "$STEM" ]
+then
+	if ! [ -f "$TARFILE" ]
+	then
+		wget --retry-connrefused --tries=10 "$URL"
+	fi
+	tar -xf "$STEM.tar.xz"
+fi
+
+echo "Creating AppDir beforehand"
+echo "--------------------------"
+
+mkdir -vp AppDir/usr/bin/
+mkdir -vp AppDir/usr/share/applications/
+mkdir -vp AppDir/usr/share/icons/
+mkdir -vp AppDir/usr/lib/helix
+cp -va "$STEM"/* AppDir/usr/lib/helix/
+
+cp -v helix.desktop AppDir/usr/share/applications/
+cp -v helix.png AppDir/usr/share/icons/
+
+echo "X-AppImage-Version=$VERSION" >> AppDir/usr/share/applications/helix.desktop
+echo "StartupWMClass=$WMCLASS" >> AppDir/usr/share/applications/helix.desktop
+
+find AppDir
+
+echo "
+READY
+"
+

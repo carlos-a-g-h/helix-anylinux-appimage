@@ -3,18 +3,42 @@
 set -eu
 
 ARCH=$(uname -m)
-VERSION=$(pacman -Q PACKAGENAME | awk '{print $2; exit}') # example command to get version of application here
+VERSION=$(cat version)
 export ARCH VERSION
 export OUTPATH=./dist
-export ADD_HOOKS="self-updater.bg.hook"
-export UPINFO="gh-releases-zsync|${GITHUB_REPOSITORY%/*}|${GITHUB_REPOSITORY#*/}|latest|*$ARCH.AppImage.zsync"
-export ICON=PATH_OR_URL_TO_ICON
-export DESKTOP=PATH_OR_URL_TO_DESKTOP_ENTRY
+export ICON=$(realpath -e AppDir/usr/share/icons/helix.png)
+export DESKTOP=$(realpath -e AppDir/usr/share/applications/helix.desktop)
+export DEPLOY_OPENGL=0
+export DEPLOY_PIPEWIRE=0
+
+URL_QSHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
+
+wget --retry-connrefused --tries=30 \
+	"$URL_QSHARUN" -O \
+	./quick-sharun.sh
 
 # Deploy dependencies
-quick-sharun /PATH/TO/BINARY_AND_LIBRARIES_HERE
 
-# Additional changes can be done in between here
+./quick-sharun.sh ./AppDir/usr/lib/helix/hx
+
+# Add some extra stuff
+
+if ! [ -d ./AppDir/usr/lib/helix/runtime ]
+then
+	ln -srv ./AppDir/usr/lib/helix/runtime ./AppDir/bin/runtime
+fi
+
+cp -va hx-* ./AppDir/bin/
+
+chmod +x ./AppDir/bin/hx-*
+
+for PATH_ITEM in ./AppDir/bin/hx-*
+do
+	ITEM_NAME=$(basename $PATH_ITEM)
+	PATH_ITEM_NEW="./AppDir/bin/${ITEM_NAME:3:-3}"
+	mv -v "$PATH_ITEM" "$PATH_ITEM_NEW"
+done
 
 # Turn AppDir into AppImage
-quick-sharun --make-appimage
+
+./quick-sharun.sh --make-appimage
