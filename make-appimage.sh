@@ -27,7 +27,7 @@ chmod +x ./quick-sharun.sh
 
 # Add some extra stuff
 
-if ! [ -d ./AppDir/usr/lib/helix/runtime ]
+if ! [ -d ./AppDir/bin/runtime ]
 then
 	ln -srv ./AppDir/usr/lib/helix/runtime ./AppDir/bin/runtime
 fi
