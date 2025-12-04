@@ -32,6 +32,6 @@ The official repository is [this one](https://github.com/helix-editor/helix)
 
 ## About this specific appimage
 
-The appimages are made using the official binaries from the official repositories
+The appimages are made using the official binaries from the official releases
 
-The appimages made on this repo are NON-OFFICIAL, Helix already releases their own appimages, but they do not run on older systems, and that is why I made this repository, because I use an older system that does not run newer versions of Helix
+The appimages made on this repo are NON-OFFICIAL. Helix already releases their own appimages, but they do not run on older systems, and that is why I made this repository, because I use an older system that does not run newer versions of Helix
