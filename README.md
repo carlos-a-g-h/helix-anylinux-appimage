@@ -35,3 +35,19 @@ The official repository is [this one](https://github.com/helix-editor/helix)
 The appimages are made using the official binaries from the official releases
 
 The appimages made on this repo are NON-OFFICIAL. Helix already releases their own appimages, but they do not run on older systems, and that is why I made this repository, because I use an older system that does not run newer versions of Helix
+
+## Internal commands
+
+```
+./Helix.AppImage [COMMAND] [ARGs...]
+```
+
+This appimage has 2 internal commands that handle Helix's runtime directory. By default, Helix will only use the runtime directory that is inside the AppImage
+
+→ set-env-runtime
+
+This command writes an ENV file for the appimage with the path to a different runtime directory
+
+→ ext-def-runtime
+
+This command extracts the contents of the default runtime directory to a different directory
