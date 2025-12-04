@@ -11,11 +11,15 @@ export DESKTOP=$(realpath -e AppDir/usr/share/applications/helix.desktop)
 export DEPLOY_OPENGL=0
 export DEPLOY_PIPEWIRE=0
 
+# Download the quick-sharun.sh script
+
 URL_QSHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
 
 wget --retry-connrefused --tries=30 \
 	"$URL_QSHARUN" -O \
 	./quick-sharun.sh
+
+chmod +x ./quick-sharun.sh
 
 # Deploy dependencies
 
