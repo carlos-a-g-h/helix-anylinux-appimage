@@ -1,0 +1,7 @@
+25.07.1
+
+https://raw.githubusercontent.com/helix-editor/helix/refs/heads/master/logo.svg
+
+# 25.07.1
+https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.07.1-x86_64-linux.tar.xz
+https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.07.1-aarch64-linux.tar.xz
