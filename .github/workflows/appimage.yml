@@ -52,5 +52,9 @@ jobs:
         with:
           pattern: AppImage-*
           merge-multiple: true
+      - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+        with:
+          pattern: AppDir-*
+          merge-multiple: true
       - name: Release AppImage
         uses: pkgforge-dev/make-stable-appimage-release@4ed3d48ccb065352b6e6c0db6d39885b201c54a0 #v1.1
