@@ -1,7 +1,8 @@
 25.07.1
 
-# Icon
+# Icon(s)
 https://raw.githubusercontent.com/helix-editor/helix/refs/heads/master/logo.svg
+https://raw.githubusercontent.com/helix-editor/helix/refs/heads/master/contrib/helix.png
 
 ###################
 # Version 25.07.1 #
