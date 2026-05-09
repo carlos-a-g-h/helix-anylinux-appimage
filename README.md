@@ -6,13 +6,11 @@
 
 ## About Helix
 
-Helix is a terminal-based modal text editor similar to Vim/NeoVim, but it does not uses vim-motions, it uses its own set of motions similar to the Vim ones, but with an emphasis on more ergonomics
-
-The official repository is [this one](https://github.com/helix-editor/helix)
+[Helix](https://github.com/helix-editor/helix) is a terminal-based modal text editor similar to Vim/NeoVim, but it does not uses vim-motions, it uses its own set of motions similar to the Vim ones, but with an emphasis on more ergonomics
 
 ## About this specific appimage
 
-The appimages are made using the official binaries from the official releases
+The appimages are made using [official binaries](https://github.com/helix-editor/helix/releases) from the official releases
 
 The appimages made on this repo are NON-OFFICIAL. Helix already releases their own appimages, but they do not run on older systems, and that is why I made this repository, because I use an older system that does not run newer versions of Helix
 
