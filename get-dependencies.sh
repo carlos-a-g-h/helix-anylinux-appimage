@@ -43,14 +43,19 @@ sha256sum "$FILE_UPS" > "$DET/upstream.sha256.txt"
 
 # Extract
 mkdir -vp extracted
-tar -vxf $FILE_UPS" -C extracted
+tar -vxf "$FILE_UPS" -C extracted
 mv -v $EXT_UPS extracted/helix-editor
 
 # Create AppDir
 mkdir -p AppDir/helix-files
 
+# Copy the "contrib" and the "runtime" directories
+cp -va extracted/helix-editor/contrib AppDir/helix-files/
+cp -va extracted/helix-editor/runtime AppDir/helix-files/
 
-
+# Copy the License and the README.md to the details directory
+cp -va extracted/helix-editor/LICENSE "$DET"/
+cp -va extracted/helix-editor/README.md "$DET"/
 
 ############################################################################################
 
@@ -65,38 +70,38 @@ mkdir -p AppDir/helix-files
 # echo "Ensuring Helix ver. $VERSION"
 # echo "-------------------------------"
 
-if ! [ -d "$STEM" ]
-then
-	if ! [ -f "$TARFILE" ]
-	then
-		wget --retry-connrefused --tries=10 "$URL_TARFILE"
-	fi
-	tar -xf "$STEM.tar.xz"
-fi
+# if ! [ -d "$STEM" ]
+# then
+#	if ! [ -f "$TARFILE" ]
+#	then
+#		wget --retry-connrefused --tries=10 "$URL_TARFILE"
+#	fi
+#	tar -xf "$STEM.tar.xz"
+#fi
 
-if [ ! -f "helix.png" ]
-then
-	wget --retry-connrefused --tries=10 "$URL_ICON"
-fi
+#if [ ! -f "helix.png" ]
+#then
+#	wget --retry-connrefused --tries=10 "$URL_ICON"
+#fi
 
-echo "Creating AppDir beforehand"
-echo "--------------------------"
+#echo "Creating AppDir beforehand"
+#echo "--------------------------"
 
-mkdir -vp AppDir/usr/bin/
-mkdir -vp AppDir/usr/share/applications/
-mkdir -vp AppDir/usr/share/icons/
-mkdir -vp AppDir/usr/lib/helix
-cp -va "$STEM"/* AppDir/usr/lib/helix/
+#mkdir -vp AppDir/usr/bin/
+#mkdir -vp AppDir/usr/share/applications/
+#mkdir -vp AppDir/usr/share/icons/
+#mkdir -vp AppDir/usr/lib/helix
+#cp -va "$STEM"/* AppDir/usr/lib/helix/
 
-cp -v helix.desktop AppDir/usr/share/applications/
-cp -v helix.png AppDir/usr/share/icons/
+#cp -v helix.desktop AppDir/usr/share/applications/
+#cp -v helix.png AppDir/usr/share/icons/
 
-echo "X-AppImage-Version=$VERSION" >> AppDir/usr/share/applications/helix.desktop
-echo "StartupWMClass=$WMCLASS" >> AppDir/usr/share/applications/helix.desktop
+#echo "X-AppImage-Version=$VERSION" >> AppDir/usr/share/applications/helix.desktop
+#echo "StartupWMClass=$WMCLASS" >> AppDir/usr/share/applications/helix.desktop
 
-find AppDir
+#find AppDir
 
-echo "
-READY
-"
+#echo "
+#READY
+#"
 
