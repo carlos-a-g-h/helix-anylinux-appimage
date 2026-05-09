@@ -12,17 +12,6 @@ export DESKTOP=$(realpath -e helix.desktop)
 export DEPLOY_OPENGL=0
 export DEPLOY_PIPEWIRE=0
 
-cp -va hx-* ./AppDir/bin/
-
-chmod +x ./AppDir/bin/hx-*
-
-for PATH_ITEM in ./AppDir/bin/hx-*
-do
-	ITEM_NAME=$(basename $PATH_ITEM)
-	PATH_ITEM_NEW="./AppDir/bin/${ITEM_NAME:3:-3}"
-	mv -v "$PATH_ITEM" "$PATH_ITEM_NEW"
-done
-
 # Copy details
 DET="AppDir/_details"
 mkdir -vp "$DET"
@@ -36,6 +25,16 @@ cp -v is_setup.1.sh AppDir/bin/setup
 cat is_setup.2.sh >> AppDir/bin/setup
 chmod +x AppDir/bin/details
 chmod +x AppDir/bin/setup
+
+# Copy the internal scripts that are specific for Helix
+cp -va hx-* ./AppDir/bin/
+chmod +x ./AppDir/bin/hx-*
+for PATH_ITEM in ./AppDir/bin/hx-*
+do
+	ITEM_NAME=$(basename $PATH_ITEM)
+	PATH_ITEM_NEW="./AppDir/bin/${ITEM_NAME:3:-3}"
+	mv -v "$PATH_ITEM" "$PATH_ITEM_NEW"
+done
 
 # Turn AppDir into AppImage
 ./quick-sharun.sh --make-appimage
