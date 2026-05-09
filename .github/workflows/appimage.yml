@@ -41,7 +41,7 @@ jobs:
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: AppDir-${{ matrix.arch }}
-          path: AppDir-${{ matrix.arch }}-AppImage.tar.xz
+          path: AppDir-${{ matrix.arch }}-AppImage.sfs
   release:
     if: ${{ github.ref_name == 'main' }}
     needs: [build]
