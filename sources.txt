@@ -3,13 +3,18 @@
 # Icon
 https://raw.githubusercontent.com/helix-editor/helix/refs/heads/master/logo.svg
 
-# Version 25.07.1
+###################
+# Version 25.07.1 #
+###################
+
+# Release URL
+https://github.com/helix-editor/helix/releases/tag/25.07.1
 # URLs
 https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.07.1-x86_64-linux.tar.xz
 https://github.com/helix-editor/helix/releases/download/25.07.1/helix-25.07.1-aarch64-linux.tar.xz
 # FILES
 _helix-25.07.1-x86_64-linux.tar.xz
 _helix-25.07.1-aarch64-linux.tar.xz
-# EXTRACTED
+# EXTRACTED PATH
 extracted/helix-25.07.1-x86_64-linux
 extracted/helix-25.07.1-aarch64-linux
