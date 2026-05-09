@@ -57,6 +57,12 @@ cp -va extracted/helix-editor/runtime AppDir/helix-files/
 cp -va extracted/helix-editor/LICENSE "$DET"/
 cp -va extracted/helix-editor/README.md "$DET"/
 
+# Install basic packages
+pacman -Syy --noconfirm \
+	base-devel \
+	libxtst libxrandr libxkbcommon libxkbcommon-x11 libxi libxcb xorg-server-xvfb \
+	systemd-libs
+
 ############################################################################################
 
 # STEM="helix-$VERSION-$ARCH-linux"
