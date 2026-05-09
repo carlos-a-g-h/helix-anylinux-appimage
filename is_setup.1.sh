@@ -5,13 +5,13 @@
 
 set -eu
 
-MAIN_BIN="/usr/bin/TeamSpeak"
+MAIN_BIN="/usr/bin/hx"
 
 # CONFIG_DIR="$HOME""/.config/program"
 
-DESKTOP="program.desktop"
+DESKTOP="helix-editor.desktop"
 DESKTOP_EXEC=$(basename "$MAIN_BIN")
-PATH_ICON="/usr/share/icons/TeamSpeak.png"
+PATH_ICON="/usr/share/icons/helix.svg"
 declare -a LBINARIES=(
 	"$MAIN_BIN"
 )
