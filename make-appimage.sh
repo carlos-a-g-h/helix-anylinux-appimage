@@ -8,10 +8,15 @@ VERSION="$(sed -n 1p sources.txt)"
 UBID="$1"
 UBID_SHORT="${UBID:0:8}"
 
+NAME="Helix"
+APPIMAGE_STEM="$NAME"_v"$VERSION"_"$UBID_SHORT"_anylinux_"$ARCH"
+
 export ARCH VERSION
 export OUTPATH=./dist
 export ICON=$(realpath -e helix.png)
 export DESKTOP=$(realpath -e helix.desktop)
+export OUTNAME="$APPIMAGE_STEM".AppImage
+
 export DEPLOY_OPENGL=0
 export DEPLOY_PIPEWIRE=0
 
