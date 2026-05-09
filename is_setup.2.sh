@@ -270,7 +270,7 @@ then
 
 		# RUN EXTRA JOB(s)
 
-		additional_config_tasks
+		# additional_config_tasks
 
 	fi
 
