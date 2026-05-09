@@ -9,7 +9,7 @@ MAIN_BIN="/usr/bin/hx"
 
 CONFIG_DIR="$HOME""/.config/helix"
 
-DESKTOP="helix-editor.desktop"
+DESKTOP="helix.desktop"
 DESKTOP_EXEC=$(basename "$MAIN_BIN")
 PATH_ICON="/usr/share/icons/helix.png"
 declare -a LBINARIES=(
