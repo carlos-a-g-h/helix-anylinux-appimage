@@ -7,7 +7,7 @@ set -eu
 
 MAIN_BIN="/usr/bin/hx"
 
-# CONFIG_DIR="$HOME""/.config/program"
+CONFIG_DIR="$HOME""/.config/helix"
 
 DESKTOP="helix-editor.desktop"
 DESKTOP_EXEC=$(basename "$MAIN_BIN")
