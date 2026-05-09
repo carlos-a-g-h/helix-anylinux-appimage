@@ -30,7 +30,8 @@ DESTINATION=$(realpath "$1")
 
 mkdir -v "$DESTINATION"
 
-cp -va "$CURRENTDIR/bin/runtime"/* "$DESTINATION"
+# cp -va "$CURRENTDIR/bin/runtime"/* "$DESTINATION"
+cp -va "$CURRENTDIR/helix-files"/* "$DESTINATION"
 
 echo "
 ALL DONE!
