@@ -47,11 +47,11 @@ tar -vxf "$FILE_UPS" -C extracted
 mv -v $EXT_UPS extracted/helix-editor
 
 # Create AppDir
-mkdir -p AppDir/helix-files
+mkdir -p AppDir/_config
 
 # Copy the "contrib" and the "runtime" directories
-cp -va extracted/helix-editor/contrib AppDir/helix-files/
-cp -va extracted/helix-editor/runtime AppDir/helix-files/
+cp -va extracted/helix-editor/contrib AppDir/_config/
+cp -va extracted/helix-editor/runtime AppDir/_config/
 
 # Copy the License and the README.md to the details directory
 cp -va extracted/helix-editor/LICENSE "$DET"/
