@@ -1,6 +1,9 @@
 #!/bin/bash
 
-# CURRENTDIR
+# NOTE: THIS IS AN INTERNAL SCRIPT AND IT CAN ONLY RUN INSIDE THE APPIMAGE AS
+# A COMMAND LINE ARGUMENT
+
+# CURRENTDIR = Mounter AppDir...?
 
 set -e
 
@@ -30,7 +33,8 @@ DESTINATION=$(realpath "$1")
 
 mkdir -v "$DESTINATION"
 
-cp -va "$CURRENTDIR/bin/runtime"/* "$DESTINATION"
+# cp -va "$CURRENTDIR/bin/runtime"/* "$DESTINATION"
+cp -va "$CURRENTDIR/_config"/* "$DESTINATION"
 
 echo "
 ALL DONE!

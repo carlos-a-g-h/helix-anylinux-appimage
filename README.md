@@ -4,7 +4,32 @@
 
 [![CI Build Status](https://github.com//carlos-a-g-h/helix-anylinux-appimage/actions/workflows/appimage.yml/badge.svg)](https://github.com/carlos-a-g-h/helix-anylinux-appimage/releases/latest)
 
-Download the latest release [here](https://github.com/carlos-a-g-h/helix-anylinux-appimage/releases/latest)
+## About Helix
+
+[Helix](https://github.com/helix-editor/helix) is a terminal-based modal text editor similar to Vim/NeoVim, but it does not uses vim-motions, it uses its own set of motions similar to the Vim ones, but with an emphasis on more ergonomics
+
+## About this specific AppImage
+
+This AppImage is made using [official binaries](https://github.com/helix-editor/helix/releases) from the official releases
+
+The appimages made on this repo are NON-OFFICIAL. Helix already releases their own appimages, but they do not run on older systems, and that is why I made this repository, because I use an older system that does not run newer versions of Helix. The AppImages is made using a set of tools called AnyLinux, more info about this at the end of this README file
+
+## Internal commands
+
+```
+./Helix.AppImage [COMMAND] [ARGs...]
+```
+
+This AppImage has internal scripts and programs that can be launched by calling them as commandline arguments
+
+|Program or script|Description|
+|-|-|
+| setup | An "installation" script for the appimage. It provides a nice config, a DESKTOP file in /usr/share/applications and an icon |
+| details | Extracts the "details" directory from the AppImage |
+| set-env-runtime | writes an ENV file for the appimage with the path to a different runtime directory |
+| ext-def-runtime | extracts the contents of the default runtime directory to a different directory |
+
+NOTE: The --config argument in the setup script copies the runtime and contrib directories to the config directory, the scripts "ext-def-runtime" and "ext-def-runtime" handle runtime paths that can be located elsewhere
 
 ## What is the AnyLinux project?
 
@@ -23,31 +48,3 @@ More at: [AnyLinux-AppImages](https://carlos-a-g-h.github.io/Anylinux-AppImages/
     <img src="https://github.com/user-attachments/assets/d40067a6-37d2-4784-927c-2c7f7cc6104b" alt="Inspiration Image">
   </a>
 </details>
-
-## About Helix
-
-Helix is a terminal-based modal text editor similar to Vim/NeoVim, but it does not uses vim-motions, it uses its own set of motions similar to the Vim ones, but with an emphasis on more ergonomics
-
-The official repository is [this one](https://github.com/helix-editor/helix)
-
-## About this specific appimage
-
-The appimages are made using the official binaries from the official releases
-
-The appimages made on this repo are NON-OFFICIAL. Helix already releases their own appimages, but they do not run on older systems, and that is why I made this repository, because I use an older system that does not run newer versions of Helix
-
-## Internal commands
-
-```
-./Helix.AppImage [COMMAND] [ARGs...]
-```
-
-This appimage has 2 internal commands that handle Helix's runtime directory. By default, Helix will only use the runtime directory that is inside the AppImage
-
-→ set-env-runtime
-
-This command writes an ENV file for the appimage with the path to a different runtime directory
-
-→ ext-def-runtime
-
-This command extracts the contents of the default runtime directory to a different directory
