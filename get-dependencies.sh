@@ -2,19 +2,68 @@
 
 set -eu
 
+# Get architecture and version
 ARCH=$(uname -m)
-VERSION=$(cat version)
+VERSION="$(sed -n 1p sources.txt)"
 
-STEM="helix-$VERSION-$ARCH-linux"
-TARFILE="$STEM.tar.xz"
-URL_TARFILE="https://github.com/helix-editor/helix/releases/download/$VERSION/$TARFILE"
+# Get Upstream URL and filename
+URL_UPS=$(awk "/https/ && /$VERSION/ && /$ARCH/" sources.txt)
+FILE_UPS=$(awk "/_helix/ && /$VERSION/ && /$ARCH/" sources.txt)
+EXT_UPS=$(awk "/extracted/ && /helix/ && /$VERSION/ && /$ARCH/" sources.txt)
 
-URL_ICON="https://raw.githubusercontent.com/helix-editor/helix/refs/heads/master/contrib/helix.png"
+# Get the icon
+URL_ICON=$(awk "/https/ && /raw.githubusercontent.com/ && /helix.png/" sources.txt)
 
-WMCLASS="helix"
+# Get the Quick Sharun script
+URL_SHARUN=$(awk "/https/ && /raw.githubusercontent.com/ && /quick-sharun.sh/" sources.txt)
 
-echo "Ensuring Helix ver. $VERSION"
-echo "-------------------------------"
+# Download the binary from upstream
+URL="$URL_UPS"
+FNAME="$FILE_UPS"
+wget "$URL" -O "$FNAME"
+
+# Download the icon
+URL="$URL_ICON"
+FNAME="helix.png"
+wget "$URL" -O "$FNAME"
+
+# Download the Quick Sharun script
+URL="$URL_SHARUN"
+FNAME="quick-sharun.sh"
+wget "$URL" -O "$FNAME"
+chmod +x "$FNAME"
+
+# Create Details directory
+DET="AppDir/_details"
+mkdir -vp "$DET"
+
+# Write details
+echo "$URL_UPS" > "$DET/upstream.txt"
+sha256sum "$FILE_UPS" > "$DET/upstream.sha256.txt"
+
+# Extract
+mkdir -vp extracted
+tar -vxf $FILE_UPS" -C extracted
+mv -v $EXT_UPS extracted/helix-editor
+
+# Create AppDir
+mkdir -p AppDir/helix-files
+
+
+
+
+############################################################################################
+
+# STEM="helix-$VERSION-$ARCH-linux"
+# TARFILE="$STEM.tar.xz"
+# URL_TARFILE="https://github.com/helix-editor/helix/releases/download/$VERSION/$TARFILE"
+
+# URL_ICON="https://raw.githubusercontent.com/helix-editor/helix/refs/heads/master/contrib/helix.png"
+
+# WMCLASS="helix"
+
+# echo "Ensuring Helix ver. $VERSION"
+# echo "-------------------------------"
 
 if ! [ -d "$STEM" ]
 then
