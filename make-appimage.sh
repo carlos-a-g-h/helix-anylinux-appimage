@@ -50,6 +50,7 @@ done
 # Turn AppDir into AppImage
 ./quick-sharun.sh --make-appimage
 
-# Archive the AppDir in a TAR
-mv -v AppDir AppDir-"$ARCH"
-tar -cvjf AppDir-"$ARCH"-AppImage.tar.xz AppDir-"$ARCH"
+# Archive the AppDir in a SQUASHFS file
+mksquashfs AppDir AppDir-"$ARCH"-AppImage.sfs -comp xz
+# mv -v AppDir AppDir-"$ARCH"
+# tar -cvjf AppDir-"$ARCH"-AppImage.tar.xz AppDir-"$ARCH"
