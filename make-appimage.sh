@@ -5,12 +5,18 @@ set -eu
 ARCH=$(uname -m)
 VERSION="$(sed -n 1p sources.txt)"
 
+UBID="$1"
+UBID_SHORT="${UBID:0:8}"
+
 export ARCH VERSION
 export OUTPATH=./dist
 export ICON=$(realpath -e helix.png)
 export DESKTOP=$(realpath -e helix.desktop)
 export DEPLOY_OPENGL=0
 export DEPLOY_PIPEWIRE=0
+
+# Deploy dependencies
+./quick-sharun.sh extracted/helix-editor/hx
 
 # Copy details
 DET="AppDir/_details"
@@ -40,5 +46,5 @@ done
 ./quick-sharun.sh --make-appimage
 
 # Archive the AppDir in a TAR
-# mv -v AppDir AppDir-"$ARCH"
-# tar -cvjf AppDir-"$ARCH".AppImage.tar.xz AppDir-"$ARCH"
+mv -v AppDir AppDir-"$ARCH"
+tar -cvjf AppDir-"$ARCH"-AppImage.tar.xz AppDir-"$ARCH"
