@@ -59,7 +59,7 @@ cp -va extracted/helix-editor/README.md "$DET"/
 
 # Install basic packages
 pacman -Syy --noconfirm \
-	base-devel \
+	base-devel squashfs-tools \
 	libxtst libxrandr libxkbcommon libxkbcommon-x11 libxi libxcb xorg-server-xvfb \
 	systemd-libs
 
