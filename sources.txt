@@ -1,5 +1,8 @@
 25.07.1
 
+# Quick Sharun Script
+https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh
+
 # Icon(s)
 https://raw.githubusercontent.com/helix-editor/helix/refs/heads/master/logo.svg
 https://raw.githubusercontent.com/helix-editor/helix/refs/heads/master/contrib/helix.png
