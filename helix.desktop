@@ -2,9 +2,9 @@
 Name=Helix
 Comment=Modal Text editor similar to Vim/NeoVim
 Comment[es]=Editor de texto modal similar a Vim/NeoVim
-TryExec=/usr/lib/helix/hx
-Exec=/usr/lib/helix/hx %F
-# Exec=/usr/lib/helix/hx -w %F
+TryExec=/usr/bin/hx
+Exec=/usr/bin/hx %F
+# Exec=/usr/bin/hx -w %F
 Terminal=true
 Type=Application
 Keywords=Text;editor;
