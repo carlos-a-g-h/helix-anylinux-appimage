@@ -20,15 +20,16 @@ The appimages made on this repo are NON-OFFICIAL. Helix already releases their o
 ./Helix.AppImage [COMMAND] [ARGs...]
 ```
 
-This appimage has 2 internal commands that handle Helix's runtime directory. By default, Helix will only use the runtime directory that is inside the AppImage
+This AppImage has internal scripts and programs that can be launched by calling them as commandline arguments
 
-→ set-env-runtime
+|Program or script|Description|
+|-|-|
+| setup | An "installation" script for the appimage. It provides a nice config, a DESKTOP file in /usr/share/applications and an icon |
+| details | Extracts the "details" directory from the AppImage |
+| set-env-runtime | writes an ENV file for the appimage with the path to a different runtime directory |
+| ext-def-runtime | extracts the contents of the default runtime directory to a different directory |
 
-This command writes an ENV file for the appimage with the path to a different runtime directory
-
-→ ext-def-runtime
-
-This command extracts the contents of the default runtime directory to a different directory
+NOTE: The --config argument in the setup script copies the runtime and contrib directories to the config directory, the scripts "ext-def-runtime" and "ext-def-runtime" handle runtime paths that can be located elsewhere
 
 ## What is the AnyLinux project?
 
