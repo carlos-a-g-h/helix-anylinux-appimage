@@ -3,34 +3,14 @@
 set -eu
 
 ARCH=$(uname -m)
-VERSION=$(cat version)
+VERSION="$(sed -n 1p sources.txt)"
+
 export ARCH VERSION
 export OUTPATH=./dist
-export ICON=$(realpath -e AppDir/usr/share/icons/helix.png)
-export DESKTOP=$(realpath -e AppDir/usr/share/applications/helix.desktop)
+export ICON=$(realpath -e helix.png)
+export DESKTOP=$(realpath -e helix.desktop)
 export DEPLOY_OPENGL=0
 export DEPLOY_PIPEWIRE=0
-
-# Download the quick-sharun.sh script
-
-URL_QSHARUN="https://raw.githubusercontent.com/pkgforge-dev/Anylinux-AppImages/refs/heads/main/useful-tools/quick-sharun.sh"
-
-wget --retry-connrefused --tries=30 \
-	"$URL_QSHARUN" -O \
-	./quick-sharun.sh
-
-chmod +x ./quick-sharun.sh
-
-# Deploy dependencies
-
-./quick-sharun.sh ./AppDir/usr/lib/helix/hx
-
-# Add some extra stuff
-
-if ! [ -d ./AppDir/bin/runtime ]
-then
-	ln -srv ./AppDir/usr/lib/helix/runtime ./AppDir/bin/runtime
-fi
 
 cp -va hx-* ./AppDir/bin/
 
@@ -43,6 +23,23 @@ do
 	mv -v "$PATH_ITEM" "$PATH_ITEM_NEW"
 done
 
-# Turn AppDir into AppImage
+# Copy details
+DET="AppDir/_details"
+mkdir -vp "$DET"
+echo "$UBID" > "$DET"/commit.txt
+echo "$(date)" > "$DET"/date.txt
+pacman -Q > "$DET"/packages.txt
 
+# Copy Internal Scripts
+cp -v is_details AppDir/bin/details
+cp -v is_setup.1.sh AppDir/bin/setup
+cat is_setup.2.sh >> AppDir/bin/setup
+chmod +x AppDir/bin/details
+chmod +x AppDir/bin/setup
+
+# Turn AppDir into AppImage
 ./quick-sharun.sh --make-appimage
+
+# Archive the AppDir in a TAR
+# mv -v AppDir AppDir-"$ARCH"
+# tar -cvjf AppDir-"$ARCH".AppImage.tar.xz AppDir-"$ARCH"
