@@ -32,27 +32,29 @@ jobs:
         run: /bin/sh ./get-dependencies.sh
       - name: Make AppImage
         run: /bin/sh ./make-appimage.sh "${{ github.sha }}"
-      - name: Upload artifact
+      - name: Upload AppImage
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: AppImage-${{ matrix.arch }}
           path: dist
-      - name: Upload artifact
+      - name: Upload AppDir
         uses: actions/upload-artifact@330a01c490aca151604b8cf639adc76d48f6c5d4 # v5.0.0
         with:
           name: AppDir-${{ matrix.arch }}
-          path: AppDir-${{ matrix.arch }}*.sfs
+          path: *.AppImage.squashfs
   release:
     if: ${{ github.ref_name == 'main' }}
     needs: [build]
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+      - name: Download AppImage
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
         with:
           pattern: AppImage-*
           merge-multiple: true
-      - uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
+      - name: Download AppDir
+        uses: actions/download-artifact@018cc2cf5baa6db3ef3c5f8a56943fffe632ef53 # v6.0.0
         with:
           pattern: AppDir-*
           merge-multiple: true
